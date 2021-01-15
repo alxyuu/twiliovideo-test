@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { connect, RemoteParticipant, Room } from "twilio-video";
+import { connect, LocalDataTrack, RemoteParticipant, Room } from "twilio-video";
 
 import Participant from "./Participant";
 
@@ -23,13 +23,20 @@ const Conference: React.FC = () => {
       setRemoteParticipants(Array.from(room.participants.values()));
 
       room.on("participantConnected", (participant) =>
-        setRemoteParticipants([...remoteParticipants, participant])
+        setRemoteParticipants((remoteParticipants) => [
+          ...remoteParticipants,
+          participant,
+        ])
       );
       room.on("participantDisconnected", (participant) =>
-        setRemoteParticipants(
+        setRemoteParticipants((remoteParticipants) =>
           remoteParticipants.filter((p) => p.identity !== participant.identity)
         )
       );
+
+      window.addEventListener("beforeunload", () => {
+        room.disconnect();
+      });
     })();
   }, []);
 

@@ -25,12 +25,11 @@ const Participant: React.FC<{
   useEffect(() => {
     if (!local) {
       participant.on("trackSubscribed", (track) =>
-        setTracks([...tracks, track])
+        setTracks((tracks) => [...tracks, track])
       );
     }
   }, []);
 
-  console.log(tracks.map((track) => track.name));
   return (
     <div className="participant" id={participant.identity}>
       <div className="identity">{participant.identity}</div>
