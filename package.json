@@ -8,10 +8,21 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/react-hooks": "^5.0.0",
+    "@types/events": "^3.0.0",
+    "@types/jest": "^26.0.20",
     "@types/twilio-video": "^2.7.3",
+    "d3-timer": "^2.0.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "jest": "^26.6.3",
     "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-router-dom": "^5.2.0",
     "twilio": "^3.54.2",
     "twilio-video": "^2.10.0"
   },

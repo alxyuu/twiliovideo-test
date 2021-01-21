@@ -1,29 +1,20 @@
-import Head from "next/head";
-import Conference from "../components/Conference";
-import styles from "../styles/Home.module.css";
+import React from "react";
+import dynamic from "next/dynamic";
+
+import { CssBaseline } from "@material-ui/core";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+
+import theme from "../components/twilio/theme";
+import "../components/twilio/types";
+const VideoApp = dynamic(() => import("../components/VideoApp"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <Conference />
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <VideoApp />
+    </MuiThemeProvider>
   );
 }

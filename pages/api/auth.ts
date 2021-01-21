@@ -5,12 +5,12 @@ export default (req, res) => {
     process.env.TWILIO_SID!,
     process.env.TWILIO_KEY_SID!,
     process.env.TWILIO_KEY_SECRET!,
-    { identity: "User " + (Math.floor(Math.random() * 1000) + 100) }
+    { identity: req.query.identity }
   );
 
   token.addGrant(
     new twilio.jwt.AccessToken.VideoGrant({
-      room: "test room2",
+      room: req.query.roomName
     })
   );
 
