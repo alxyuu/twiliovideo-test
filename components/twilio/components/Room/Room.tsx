@@ -23,7 +23,15 @@ const Container = styled('div')(({ theme }) => {
 
 export default function Room() {
   return (
-    <Container>
+    <Container onDoubleClick={() => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }}>
       <MainParticipant />
       <ParticipantList />
     </Container>
